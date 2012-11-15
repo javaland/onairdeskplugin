@@ -50,4 +50,11 @@ public class Item implements Serializable
 				String.valueOf(this.artists));
 	}
 
+	@Override
+	public boolean equals(Object obj)
+	{
+		return obj instanceof Item
+				&& getAutomationId().equals(((Item) obj).getAutomationId());
+	}
+
 }
