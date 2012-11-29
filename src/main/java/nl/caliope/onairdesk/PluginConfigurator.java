@@ -27,4 +27,12 @@ public abstract class PluginConfigurator
 	public abstract JComponent getEditorComponent();
 
 	public abstract boolean isValidConfiguration();
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj instanceof PluginConfigurator)
+				&& this.getIdentifier() != null
+				&& this.getIdentifier().equals(((PluginConfigurator) obj).getIdentifier());
+	}
 }
