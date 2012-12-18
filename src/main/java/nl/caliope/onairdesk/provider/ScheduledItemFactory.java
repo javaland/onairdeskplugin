@@ -4,9 +4,9 @@ import nl.caliope.onairdesk.PluginConfigurator;
 
 import org.json.JSONObject;
 
-public abstract class PlaylistFactory
+public abstract class ScheduledItemFactory
 {
-	public abstract PlaylistProvider create(JSONObject configuration);
+	public abstract ScheduledItemProvider create(JSONObject configuration);
 
 	public abstract PluginConfigurator createConfigurator(JSONObject configuration);
 

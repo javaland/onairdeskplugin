@@ -2,14 +2,14 @@ package nl.caliope.onairdesk;
 
 import nl.caliope.onairdesk.provider.ItemProvider;
 import nl.caliope.onairdesk.provider.NowPlayingProvider;
-import nl.caliope.onairdesk.provider.PlaylistProvider;
+import nl.caliope.onairdesk.provider.ScheduledItemProvider;
 
 public abstract class AutomationController
 {
 
 	private ItemProvider itemProvider;
 	private NowPlayingProvider nowPlayingProvider;
-	private PlaylistProvider playlistProvider;
+	private ScheduledItemProvider playlistProvider;
 
 	public ItemProvider getItemProvider()
 	{
@@ -33,12 +33,12 @@ public abstract class AutomationController
 		this.nowPlayingProvider.setAutomationController(this);
 	}
 
-	public PlaylistProvider getPlaylistProvider()
+	public ScheduledItemProvider getPlaylistProvider()
 	{
 		return playlistProvider;
 	}
 
-	public void setPlaylistProvider(PlaylistProvider playlistProvider)
+	public void setPlaylistProvider(ScheduledItemProvider playlistProvider)
 	{
 		this.playlistProvider = playlistProvider;
 		this.playlistProvider.setAutomationController(this);

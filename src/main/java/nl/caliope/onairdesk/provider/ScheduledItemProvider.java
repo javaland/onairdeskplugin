@@ -2,11 +2,12 @@ package nl.caliope.onairdesk.provider;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import nl.caliope.onairdesk.AutomationController;
-import nl.caliope.onairdesk.model.Playlist;
+import nl.caliope.onairdesk.model.ScheduledItem;
 
-public abstract class PlaylistProvider
+public abstract class ScheduledItemProvider
 {
 
 	private AutomationController automationController;
@@ -18,7 +19,7 @@ public abstract class PlaylistProvider
 	 * @return
 	 * @throws IOException
 	 */
-	public abstract Playlist getPlaylist(Date date) throws IOException;
+	public abstract List<ScheduledItem> getScheduledItems(Date from,Date to) throws IOException;
 
 	public AutomationController getAutomationController()
 	{
