@@ -1,14 +1,16 @@
-package nl.caliope.onairdesk;
+package nl.caliope.onairdesk.provider;
+
+import java.util.List;
 
 import javax.swing.JComponent;
 
 import org.json.JSONObject;
 
-public abstract class PluginConfigurator
+public abstract class ProviderFactoryConfigurator
 {
 	private final JSONObject configuration;
 
-	public PluginConfigurator(JSONObject configuration)
+	public ProviderFactoryConfigurator(JSONObject configuration)
 	{
 		if (configuration == null) {
 			configuration = new JSONObject();
@@ -26,13 +28,13 @@ public abstract class PluginConfigurator
 
 	public abstract JComponent getEditorComponent();
 
-	public abstract boolean isValidConfiguration();
+	public abstract List<String> getValidationErrors();
 
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj instanceof PluginConfigurator)
+		return (obj instanceof ProviderFactoryConfigurator)
 				&& this.getIdentifier() != null
-				&& this.getIdentifier().equals(((PluginConfigurator) obj).getIdentifier());
+				&& this.getIdentifier().equals(((ProviderFactoryConfigurator) obj).getIdentifier());
 	}
 }
