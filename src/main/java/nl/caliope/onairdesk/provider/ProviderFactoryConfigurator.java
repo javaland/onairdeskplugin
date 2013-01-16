@@ -29,12 +29,4 @@ public abstract class ProviderFactoryConfigurator
 	public abstract JComponent getEditorComponent();
 
 	public abstract List<String> getValidationErrors();
-
-	@Override
-	public boolean equals(Object obj)
-	{
-		return (obj instanceof ProviderFactoryConfigurator)
-				&& this.getIdentifier() != null
-				&& this.getIdentifier().equals(((ProviderFactoryConfigurator) obj).getIdentifier());
-	}
 }
