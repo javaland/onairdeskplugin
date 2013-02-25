@@ -71,4 +71,11 @@ public class ScheduledItem
 	{
 		this.length = length;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "ScheduledItem [scheduledDate=" + scheduledDate + ", automationId=" + automationId
+				+ ", length=" + length + "]";
+	}
 }
