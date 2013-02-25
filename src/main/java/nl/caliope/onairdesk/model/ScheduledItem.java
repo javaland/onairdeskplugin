@@ -21,7 +21,7 @@ public class ScheduledItem
 	};
 
 	private Date scheduledDate;
-	private Item item;
+	private String automationId;
 	private int length;
 
 	public ScheduledItem()
@@ -29,21 +29,27 @@ public class ScheduledItem
 
 	}
 
-	public ScheduledItem(Date scheduledDate, Item item, int length)
+	public ScheduledItem(Date scheduledDate, String automationId)
 	{
 		this.scheduledDate = scheduledDate;
-		this.item = item;
+		this.automationId = automationId;
+	}
+
+	public ScheduledItem(Date scheduledDate, String automationId, int length)
+	{
+		this.scheduledDate = scheduledDate;
+		this.automationId = automationId;
 		this.length = length;
 	}
 
-	public Item getItem()
+	public String getAutomationId()
 	{
-		return item;
+		return automationId;
 	}
 
-	public void setItem(Item item)
+	public void setAutomationId(String automationId)
 	{
-		this.item = item;
+		this.automationId = automationId;
 	}
 
 	public Date getScheduledDate()
