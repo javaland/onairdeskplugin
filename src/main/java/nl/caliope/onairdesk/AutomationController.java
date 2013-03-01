@@ -4,43 +4,11 @@ import nl.caliope.onairdesk.provider.ItemProvider;
 import nl.caliope.onairdesk.provider.NowPlayingProvider;
 import nl.caliope.onairdesk.provider.ScheduledItemProvider;
 
-public abstract class AutomationController
+public interface AutomationController
 {
+	public ItemProvider getItemProvider();
 
-	private ItemProvider itemProvider;
-	private NowPlayingProvider nowPlayingProvider;
-	private ScheduledItemProvider playlistProvider;
+	public NowPlayingProvider getNowPlayingProvider();
 
-	public ItemProvider getItemProvider()
-	{
-		return itemProvider;
-	}
-
-	public void setItemProvider(ItemProvider itemProvider)
-	{
-		this.itemProvider = itemProvider;
-		this.itemProvider.setAutomationController(this);
-	}
-
-	public NowPlayingProvider getNowPlayingProvider()
-	{
-		return nowPlayingProvider;
-	}
-
-	public void setNowPlayingProvider(NowPlayingProvider nowPlayingProvider)
-	{
-		this.nowPlayingProvider = nowPlayingProvider;
-		this.nowPlayingProvider.setAutomationController(this);
-	}
-
-	public ScheduledItemProvider getPlaylistProvider()
-	{
-		return playlistProvider;
-	}
-
-	public void setPlaylistProvider(ScheduledItemProvider playlistProvider)
-	{
-		this.playlistProvider = playlistProvider;
-		this.playlistProvider.setAutomationController(this);
-	}
+	public ScheduledItemProvider getScheduledItemProvider();
 }
