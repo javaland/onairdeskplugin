@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 @XmlRootElement(name = "item")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Item implements Serializable
 {
 

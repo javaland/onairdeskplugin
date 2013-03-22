@@ -27,7 +27,7 @@ public abstract class ItemProvider
 	 */
 	public abstract List<Item> getItems(Date date) throws IOException;
 
-	public abstract Item getItem(String automationId) throws IOException;
+	public abstract Item byId(String automationId) throws IOException;
 
 	public abstract List<Integer> getIdList() throws IOException;
 
