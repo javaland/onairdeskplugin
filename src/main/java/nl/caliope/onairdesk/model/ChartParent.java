@@ -1,54 +1,50 @@
 package nl.caliope.onairdesk.model;
 
+import java.io.Serializable;
 import java.util.Map;
+import nl.caliope.onairdesk.OnairdeskResource;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
-@XmlRootElement(name = "parent")
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class ChartParent
+@OnairdeskResource(name = "chartparent")
+public class ChartParent extends Entity implements Serializable
 {
-	private Map configuration;
-	private String name;
-	private int size;
+    private static final long serialVersionUID = 2218091187697384313L;
+    private Map<Object, Object> configuration;
+    private String name;
+    private int size;
 
-	public Map getConfiguration()
-	{
-		return configuration;
-	}
+    public Map<Object, Object> getConfiguration()
+    {
+        return this.configuration;
+    }
 
-	public void setConfiguration(Map configuration)
-	{
-		this.configuration = configuration;
-	}
+    public void setConfiguration(Map<Object, Object> configuration)
+    {
+        this.configuration = configuration;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName()
+    {
+        return this.name;
+    }
 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
-	public int getSize()
-	{
-		return size;
-	}
+    public int getSize()
+    {
+        return this.size;
+    }
 
-	public void setSize(int size)
-	{
-		this.size = size;
-	}
+    public void setSize(int size)
+    {
+        this.size = size;
+    }
 
-	@Override
-	public String toString()
-	{
-		return "ChartParent [configuration=" + configuration + ", name=" + name + ", size=" + size
-				+ "]";
-	}
-
+    public String toString()
+    {
+        return "ChartParent [configuration=" + this.configuration +
+                ", name=" + this.name + ", size=" + this.size + "]";
+    }
 }

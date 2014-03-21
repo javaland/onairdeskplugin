@@ -1,70 +1,39 @@
 package nl.caliope.onairdesk.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.Map;
+import nl.caliope.onairdesk.OnairdeskResource;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
-@XmlRootElement(name = "chart")
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Chart
+@OnairdeskResource(name = "chart")
+public class Chart extends Entity implements Serializable
 {
-	private ChartParent parent;
-	private Date from;
-	private Date to;
-	private Item[] items;
+    private static final long serialVersionUID = -4454783102154137685L;
 
-	public Chart()
-	{
-	}
+    private ChartParent parent;
+    private Item[] items;
 
-	public ChartParent getParent()
-	{
-		return parent;
-	}
+    public ChartParent getParent()
+    {
+        return this.parent;
+    }
 
-	public void setParent(ChartParent parent)
-	{
-		this.parent = parent;
-	}
+    public void setParent(ChartParent parent)
+    {
+        this.parent = parent;
+    }
 
-	public Date getFrom()
-	{
-		return from;
-	}
+    public Item[] getItems()
+    {
+        return this.items;
+    }
 
-	public void setFrom(Date from)
-	{
-		this.from = from;
-	}
+    public void setItems(Item[] items)
+    {
+        this.items = items;
+    }
 
-	public Date getTo()
-	{
-		return to;
-	}
-
-	public void setTo(Date to)
-	{
-		this.to = to;
-	}
-
-	public Item[] getItems()
-	{
-		return items;
-	}
-
-	public void setItems(Item[] items)
-	{
-		this.items = items;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "Chart [parent=" + parent + ", from=" + from + ", to=" + to + ", items="
-				+ Arrays.toString(items) + "]";
-	}
+    public String toString()
+    {
+        return "Chart [parent=" + this.parent + ", items=" + Arrays.toString(this.items) + "]";
+    }
 }

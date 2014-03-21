@@ -1,81 +1,74 @@
 package nl.caliope.onairdesk.model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
 
-public class ScheduledItem
+import nl.caliope.onairdesk.OnairdeskResource;
+
+@OnairdeskResource(name = "scheduleditem")
+public class ScheduledItem extends Entity implements Serializable
 {
+    private static final long serialVersionUID = -1980527126021335300L;
 
-	/**
-	 * a compator that compares two {@link ScheduledItem} by scheduled date
-	 */
-	public static Comparator<ScheduledItem> DATE_COMPARATOR = new Comparator<ScheduledItem>()
-	{
-		public int compare(ScheduledItem o1, ScheduledItem o2)
-		{
-			Date thisDate = o1.getScheduledDate();
-			Date thatDate = o2.getScheduledDate();
+    public static Comparator<ScheduledItem> DATE_COMPARATOR = new Comparator<ScheduledItem>()
+    {
+        public int compare(ScheduledItem o1, ScheduledItem o2)
+        {
+            Date thisDate = o1.getDate();
+            Date thatDate = o2.getDate();
 
-			return thisDate.compareTo(thatDate);
-		}
-	};
+            return thisDate.compareTo(thatDate);
+        }
+    };
 
-	private Date scheduledDate;
-	private String automationId;
-	private int length;
+    private Date date;
+    private Item item;
+    private int length;
 
-	public ScheduledItem()
-	{
+    public ScheduledItem()
+    {
+    }
 
-	}
+    public ScheduledItem(Date date, Item item)
+    {
+        this.date = date;
+        this.item = item;
+    }
 
-	public ScheduledItem(Date scheduledDate, String automationId)
-	{
-		this.scheduledDate = scheduledDate;
-		this.automationId = automationId;
-	}
+    public ScheduledItem(Date date, Item item, int length)
+    {
+        this(date, item);
+        this.length = length;
+    }
 
-	public ScheduledItem(Date scheduledDate, String automationId, int length)
-	{
-		this.scheduledDate = scheduledDate;
-		this.automationId = automationId;
-		this.length = length;
-	}
+    public Item getItem()
+    {
+        return this.item;
+    }
 
-	public String getAutomationId()
-	{
-		return automationId;
-	}
+    public void setItem(Item item)
+    {
+        this.item = item;
+    }
 
-	public void setAutomationId(String automationId)
-	{
-		this.automationId = automationId;
-	}
+    public Date getDate()
+    {
+        return this.date;
+    }
 
-	public Date getScheduledDate()
-	{
-		return scheduledDate;
-	}
+    public void setDate(Date scheduledDate)
+    {
+        this.date = scheduledDate;
+    }
 
-	public void setScheduledDate(Date scheduledDate)
-	{
-		this.scheduledDate = scheduledDate;
-	}
+    public int getLength()
+    {
+        return this.length;
+    }
 
-	public int getLength()
-	{
-		return length;
-	}
-
-	public void setLength(int length)
-	{
-		this.length = length;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "ScheduledItem [scheduledDate=" + scheduledDate + ", automationId=" + automationId
-				+ ", length=" + length + "]";
-	}
+    public void setLength(int length)
+    {
+        this.length = length;
+    }
 }

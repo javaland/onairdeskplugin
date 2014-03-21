@@ -1,14 +1,17 @@
 package nl.caliope.onairdesk;
 
+import nl.caliope.onairdesk.provider.ChartProvider;
 import nl.caliope.onairdesk.provider.ItemProvider;
 import nl.caliope.onairdesk.provider.NowPlayingProvider;
 import nl.caliope.onairdesk.provider.ScheduledItemProvider;
 
-public interface AutomationController
+public abstract interface AutomationController
 {
-	public ItemProvider getItemProvider();
+    public abstract ItemProvider getItemProvider();
 
-	public NowPlayingProvider getNowPlayingProvider();
+    public abstract NowPlayingProvider getNowPlayingProvider();
 
-	public ScheduledItemProvider getScheduledItemProvider();
+    public abstract ScheduledItemProvider getScheduledItemProvider();
+
+    public abstract ChartProvider getChartProvider();
 }
