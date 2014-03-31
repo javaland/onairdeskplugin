@@ -24,8 +24,11 @@ public abstract class NowPlayingProvider extends ServiceProvider
 
         if ((this.nowPlaying == null) ||
                 (!this.nowPlaying.equals(current))) {
+            
             this.nowPlaying = current;
-            fireNowPlayingChanged(current);
+            if(this.nowPlaying != null){
+                fireNowPlayingChanged(current);
+            }
         }
     }
 
