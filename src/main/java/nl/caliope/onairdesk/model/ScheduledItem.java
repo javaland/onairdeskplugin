@@ -25,7 +25,8 @@ public class ScheduledItem extends Entity implements Serializable
     private Date date;
     private Item item;
     private int length;
-
+    private String command;
+    
     public ScheduledItem()
     {
     }
@@ -40,6 +41,13 @@ public class ScheduledItem extends Entity implements Serializable
     {
         this(date, item);
         this.length = length;
+    }
+    
+    public ScheduledItem(Date date, Item item, int length ,String command)
+    {
+        this(date, item);
+        this.length = length;
+        this.command = command;
     }
 
     public Item getItem()
@@ -71,4 +79,16 @@ public class ScheduledItem extends Entity implements Serializable
     {
         this.length = length;
     }
+
+    public String getCommand()
+    {
+        return command;
+    }
+
+    public void setCommand(String command)
+    {
+        this.command = command;
+    }
+    
+    
 }

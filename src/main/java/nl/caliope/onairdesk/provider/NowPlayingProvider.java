@@ -9,7 +9,9 @@ import nl.caliope.onairdesk.model.Item;
 public abstract class NowPlayingProvider extends ServiceProvider
 {
     private List<NowplayingListener> listeners;
+    private Item previous;
     private Item nowPlaying;
+    private Item next;
 
     public NowPlayingProvider()
     {
@@ -17,25 +19,31 @@ public abstract class NowPlayingProvider extends ServiceProvider
     }
 
     protected abstract Item retrieveNowPlaying();
-
+    protected abstract Item retrieveNext();
+    protected abstract Item retrievePrevious();
     public void update()
     {
+        Item previous = retrievePrevious();
         Item current = retrieveNowPlaying();
-
+        Item next = retrieveNext();
+        
         if ((this.nowPlaying == null) ||
                 (!this.nowPlaying.equals(current))) {
             
             this.nowPlaying = current;
+            this.previous = previous;
+            this.next = next;
             if(this.nowPlaying != null){
-                fireNowPlayingChanged(current);
+                fireNowPlayingChanged(this.previous,this.nowPlaying,this.next);
             }
         }
     }
 
-    private void fireNowPlayingChanged(Item item)
+    private void fireNowPlayingChanged(Item previous,Item current, Item next)
     {
-        for (NowplayingListener listener : new ArrayList<NowplayingListener>(this.listeners))
-            listener.nowPlayingChanged(item);
+        for (NowplayingListener listener : new ArrayList<NowplayingListener>(this.listeners)){
+            listener.nowPlayingChanged(previous,current, next);
+        }
     }
 
     public void addNowPlayingListener(NowplayingListener listener)
