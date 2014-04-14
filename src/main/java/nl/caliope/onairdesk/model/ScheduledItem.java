@@ -2,7 +2,7 @@ package nl.caliope.onairdesk.model;
 
 import java.io.Serializable;
 import java.util.Comparator;
-import java.util.Date;
+
 
 import nl.caliope.onairdesk.OnairdeskResource;
 
@@ -15,14 +15,18 @@ public class ScheduledItem extends Entity implements Serializable
     {
         public int compare(ScheduledItem o1, ScheduledItem o2)
         {
-            Date thisDate = o1.getDate();
-            Date thatDate = o2.getDate();
+            long thisDate = o1.getDate();
+            long thatDate = o2.getDate();
 
-            return thisDate.compareTo(thatDate);
+            if(thisDate == thatDate){
+                return 1;
+            } else {
+                return 0;
+            }
         }
     };
 
-    private Date date;
+    private long date;
     private Item item;
     private int length;
     private String command;
@@ -31,19 +35,19 @@ public class ScheduledItem extends Entity implements Serializable
     {
     }
 
-    public ScheduledItem(Date date, Item item)
+    public ScheduledItem(long date, Item item)
     {
         this.date = date;
         this.item = item;
     }
 
-    public ScheduledItem(Date date, Item item, int length)
+    public ScheduledItem(long date, Item item, int length)
     {
         this(date, item);
         this.length = length;
     }
     
-    public ScheduledItem(Date date, Item item, int length ,String command)
+    public ScheduledItem(long date, Item item, int length ,String command)
     {
         this(date, item);
         this.length = length;
@@ -60,12 +64,12 @@ public class ScheduledItem extends Entity implements Serializable
         this.item = item;
     }
 
-    public Date getDate()
+    public long getDate()
     {
         return this.date;
     }
 
-    public void setDate(Date scheduledDate)
+    public void setDate(long scheduledDate)
     {
         this.date = scheduledDate;
     }
