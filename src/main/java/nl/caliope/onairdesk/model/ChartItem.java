@@ -11,24 +11,24 @@ public class ChartItem extends Entity
 {
 
     private static final long serialVersionUID = -8521344959745115372L;
-    private int postion;
+    private int position;
     private int automationid;
 
-    public ChartItem(int postion, int automationid)
+    public ChartItem(int position, int automationid)
     {
 
-        this.postion = postion;
+        this.position = position;
         this.automationid = automationid;
     }
 
-    public int getPostion()
+    public int getPosition()
     {
-        return postion;
+        return position;
     }
 
-    public void setPostion(int postion)
+    public void setPosition(int position)
     {
-        this.postion = postion;
+        this.position = position;
     }
 
     public int getItemAutomationID()
