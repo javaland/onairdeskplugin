@@ -11,36 +11,36 @@ import nl.caliope.onairdesk.OnairdeskResource;
 public class Chart extends Entity implements Serializable
 {
     private static final long serialVersionUID = -4454783102154137685L;
-    private String chartName;
-    private int chartAutomationID;
+    private String name;
+    private int automationid;
     private int week;
     private int year;
     private List<ChartItem> items =  new ArrayList<ChartItem>();
 
     public Chart(String chartName, int chartAutomationID)
     {
-        this.chartName = chartName;
-        this.chartAutomationID = chartAutomationID;
+        this.name = chartName;
+        this.automationid = chartAutomationID;
     }
 
     public String getChartName()
     {
-        return chartName;
+        return name;
     }
 
     public void setChartName(String chartName)
     {
-        this.chartName = chartName;
+        this.name = chartName;
     }
 
     public int getChartAutomationID()
     {
-        return chartAutomationID;
+        return automationid;
     }
 
     public void setChartAutomationID(int chartAutomationID)
     {
-        this.chartAutomationID = chartAutomationID;
+        this.automationid = chartAutomationID;
     }
 
     public int getWeek()
@@ -75,6 +75,6 @@ public class Chart extends Entity implements Serializable
 
     public String toString()
     {
-        return "Chart [name=" + this.chartName + "]";
+        return "Chart [name=" + this.name + "]";
     }
 }
