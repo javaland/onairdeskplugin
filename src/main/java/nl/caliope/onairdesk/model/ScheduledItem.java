@@ -9,7 +9,8 @@ import nl.caliope.onairdesk.OnairdeskResource;
 @OnairdeskResource(name = "scheduleditem")
 public class ScheduledItem extends Entity implements Serializable
 {
-    private static final long serialVersionUID = -1980527126021335300L;
+
+    private static final long serialVersionUID = -7820224747828778124L;
 
     public static Comparator<ScheduledItem> DATE_COMPARATOR = new Comparator<ScheduledItem>()
     {
@@ -27,7 +28,7 @@ public class ScheduledItem extends Entity implements Serializable
     };
 
     private long date;
-    private Item item;
+    private String automationid;
     private int length;
    
     
@@ -35,26 +36,26 @@ public class ScheduledItem extends Entity implements Serializable
     {
     }
 
-    public ScheduledItem(long date, Item item)
+    public ScheduledItem(long date, String automationid)
     {
         this.date = date;
-        this.item = item;
+        this.automationid = automationid;
     }
 
-    public ScheduledItem(long date, Item item, int length)
+    public ScheduledItem(long date, String automationid, int length)
     {
-        this(date, item);
+        this(date, automationid);
         this.length = length;
     }
-    
-    public Item getItem()
+
+    public String getAutomationid()
     {
-        return this.item;
+        return automationid;
     }
 
-    public void setItem(Item item)
+    public void setAutomationid(String automationid)
     {
-        this.item = item;
+        this.automationid = automationid;
     }
 
     public long getDate()
@@ -76,6 +77,4 @@ public class ScheduledItem extends Entity implements Serializable
     {
         this.length = length;
     }
-
-    
 }
