@@ -31,14 +31,21 @@ public class ChartItem extends Entity
         this.position = position;
     }
 
-    public int getItemAutomationID()
+    public int getAutomationID()
     {
         return automationid;
     }
 
-    public void setItemAutomationID(int itemAutomationID)
+    public void setAutomationID(int automationID)
     {
-        this.automationid = itemAutomationID;
+        this.automationid = automationID;
     }
+
+    @Override
+    public String toString()
+    {
+        return "ChartItem [position=" + position + ", automationid=" + automationid + "]";
+    }
+    
 
 }

@@ -1,5 +1,6 @@
 package nl.caliope.onairdesk;
 
+import nl.caliope.onairdesk.provider.CategoryProvider;
 import nl.caliope.onairdesk.provider.ChartProvider;
 import nl.caliope.onairdesk.provider.ItemProvider;
 import nl.caliope.onairdesk.provider.NowPlayingProvider;
@@ -14,4 +15,6 @@ public abstract interface AutomationController
     public abstract ScheduledItemProvider getScheduledItemProvider();
 
     public abstract ChartProvider getChartProvider();
+    
+    public abstract CategoryProvider getCategoryProvider();
 }
