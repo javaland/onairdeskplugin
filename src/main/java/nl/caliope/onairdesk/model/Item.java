@@ -14,7 +14,8 @@ public class Item extends Entity
     private List<String> artists = new ArrayList<String>();
     private List<String> categories = new ArrayList<String>();
     private String automationid;
-
+    private String albumurl;
+    
     public String getTitle()
     {
         return this.title;
@@ -55,11 +56,23 @@ public class Item extends Entity
         this.automationid = automationId;
     }
 
+   
+
+    public String getAlbumUrl()
+    {
+        return albumurl;
+    }
+
+    public void setAlbumUrl(String albumUrl)
+    {
+        this.albumurl = albumUrl;
+    }
+
+    @Override
     public String toString()
     {
-        return "Item [title=" + this.title + ", artists=" + this.artists + ", categories="
-                + this.categories +
-                ", automationId=" + this.automationid + "]";
+        return "Item [title=" + title + ", artists=" + artists + ", categories=" + categories
+                + ", automationid=" + automationid + ", url=" + albumurl + "]";
     }
 
     public boolean equals(Object obj)
