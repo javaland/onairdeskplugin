@@ -12,10 +12,13 @@ public abstract class ScheduledItemProvider extends ServiceProvider
     /**
      * returns the playlist of the given date
      * 
+     * @param from
+     * @param to
+     * @param station
      * @param date
      * @return
      * @throws IOException
      */
-    public abstract List<ScheduledItem> getScheduledItems(Date from, Date to) throws IOException;
+    public abstract List<ScheduledItem> getScheduledItems(Date from, Date to,String station) throws IOException;
 
 }

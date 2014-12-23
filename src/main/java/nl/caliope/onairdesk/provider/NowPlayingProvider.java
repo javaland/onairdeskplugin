@@ -1,60 +1,60 @@
 package nl.caliope.onairdesk.provider;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import nl.caliope.onairdesk.NowplayingListener;
 import nl.caliope.onairdesk.model.Item;
 
-public abstract class NowPlayingProvider extends ServiceProvider
-{
-    private List<NowplayingListener> listeners;
-    private Item previous;
-    private Item nowPlaying;
-    private Item next;
+public abstract class NowPlayingProvider extends ServiceProvider {
 
-    public NowPlayingProvider()
-    {
+    private List<NowplayingListener> listeners;
+    private Map<String, Item> nowplayings = new HashMap<String, Item>();
+
+    public NowPlayingProvider() {
         this.listeners = new ArrayList<NowplayingListener>();
     }
 
-    protected abstract Item retrieveNowPlaying();
-    protected abstract Item retrieveNext();
-    protected abstract Item retrievePrevious();
-    public void update()
-    {
-        Item previous = retrievePrevious();
-        Item current = retrieveNowPlaying();
-        Item next = retrieveNext();
-        
-        if ((this.nowPlaying == null) ||
-                (!this.nowPlaying.equals(current))) {
-            
-            this.nowPlaying = current;
-            this.previous = previous;
-            this.next = next;
-            if(this.nowPlaying != null){
-                fireNowPlayingChanged(this.previous,this.nowPlaying,this.next);
+    protected abstract Item retrieveNowPlaying(String station);
+
+    protected abstract Item retrieveNext(String station);
+
+    protected abstract Item retrievePrevious(String station);
+
+    public void update(String station) {
+
+        Item previous = retrievePrevious(station);
+        Item current = retrieveNowPlaying(station);
+        Item next = retrieveNext(station);
+        if (nowplayings.containsKey(station)) {
+            if (nowplayings.get(station) == null || !nowplayings.get(station).equals(current)) {
+                if (current != null) {
+                    fireNowPlayingChanged(previous, current, next, station);
+                    nowplayings.put(station, current);
+                }
             }
+        } else {
+            fireNowPlayingChanged(previous, current, next, station);
+            nowplayings.put(station, current);
+        }
+
+    }
+
+    private void fireNowPlayingChanged(Item previous, Item current, Item next, String station) {
+        for (NowplayingListener listener : new ArrayList<NowplayingListener>(this.listeners)) {
+            listener.nowPlayingChanged(previous, current, next, station);
         }
     }
 
-    private void fireNowPlayingChanged(Item previous,Item current, Item next)
-    {
-        for (NowplayingListener listener : new ArrayList<NowplayingListener>(this.listeners)){
-            listener.nowPlayingChanged(previous,current, next);
-        }
-    }
-
-    public void addNowPlayingListener(NowplayingListener listener)
-    {
+    public void addNowPlayingListener(NowplayingListener listener) {
         List<NowplayingListener> listeners = new ArrayList<NowplayingListener>(this.listeners);
         listeners.add(listener);
         this.listeners = listeners;
     }
 
-    public void removeNowPlayingListener(NowplayingListener listener)
-    {
+    public void removeNowPlayingListener(NowplayingListener listener) {
         List<NowplayingListener> listeners = new ArrayList<NowplayingListener>(this.listeners);
         listeners.remove(listener);
         this.listeners = listeners;
