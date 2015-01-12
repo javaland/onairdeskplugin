@@ -19,6 +19,7 @@ public abstract class ScheduledItemProvider extends ServiceProvider
      * @return
      * @throws IOException
      */
+    public abstract boolean needsUpdating(Date from,String station);
     public abstract List<ScheduledItem> getScheduledItems(Date from, Date to,String station) throws IOException;
 
 }
