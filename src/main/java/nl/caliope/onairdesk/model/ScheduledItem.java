@@ -32,7 +32,9 @@ public class ScheduledItem extends Entity implements Serializable {
     private long nextPoint;
     private int breakType;
     private int playitemtypeid;
-    
+    private int fadecode;
+    private int intro;
+
     public ScheduledItem() {
     }
 
@@ -41,8 +43,7 @@ public class ScheduledItem extends Entity implements Serializable {
         this.automationid = automationid;
     }
 
-
-    public ScheduledItem( String automationid, int length, long startTime, long postroll, long preroll, long nextPoint, int breakType, int playitemtypeid) {
+    public ScheduledItem(String automationid, int length, long startTime, long postroll, long preroll, long nextPoint, int breakType, int playitemtypeid, int fadecode,int intro) {
         this.automationid = automationid;
         this.length = length;
         this.startTime = startTime;
@@ -51,8 +52,9 @@ public class ScheduledItem extends Entity implements Serializable {
         this.nextPoint = nextPoint;
         this.breakType = breakType;
         this.playitemtypeid = playitemtypeid;
+        this.fadecode = fadecode;
+        this.intro = intro;
     }
-    
 
     public String getAutomationid() {
         return automationid;
@@ -125,6 +127,29 @@ public class ScheduledItem extends Entity implements Serializable {
     public void setPlayitemtypeid(int playitemtypeid) {
         this.playitemtypeid = playitemtypeid;
     }
+
+    public int getFadecode() {
+        return fadecode;
+    }
+
+    public void setFadecode(int fadecode) {
+        this.fadecode = fadecode;
+    }
+
+    public int getIntro() {
+        return intro;
+    }
+
+    public void setIntro(int intro) {
+        this.intro = intro;
+    }
+
     
-   
+    public long getPlayLength() {
+        long length = Math.max(0, getLength());
+        long preroll = Math.max(0, getPreroll());
+        long postroll = Math.max(0, getPostroll());
+        long playLength = Math.max(0, length - (preroll + postroll));
+        return playLength;
+    }
 }
