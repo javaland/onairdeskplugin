@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import nl.caliope.onairdesk.NowplayingListener;
 import nl.caliope.onairdesk.model.Item;
 
@@ -36,8 +35,10 @@ public abstract class NowPlayingProvider extends ServiceProvider {
                 }
             }
         } else {
-            fireNowPlayingChanged(previous, current, next, station);
-            nowplayings.put(station, current);
+            if (current != null) {
+                fireNowPlayingChanged(previous, current, next, station);
+                nowplayings.put(station, current);
+            }
         }
 
     }
