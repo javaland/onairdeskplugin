@@ -7,77 +7,72 @@ import nl.caliope.onairdesk.OnairdeskResource;
 
 @OnairdeskResource(name = "item")
 public class Item extends Entity
-        implements Serializable
-{
+        implements Serializable {
+
     private static final long serialVersionUID = 8528653858312751554L;
     private String title;
     private List<String> artists = new ArrayList<String>();
     private List<String> categories = new ArrayList<String>();
     private String automationid;
     private String albumurl;
-    
-    public String getTitle()
-    {
+    private Integer order;
+
+    public String getTitle() {
         return this.title;
     }
 
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public List<String> getArtists()
-    {
+    public List<String> getArtists() {
         return this.artists;
     }
 
-    public void setArtists(List<String> artists)
-    {
+    public void setArtists(List<String> artists) {
         this.artists = artists;
     }
 
-    public List<String> getCategories()
-    {
+    public List<String> getCategories() {
         return this.categories;
     }
 
-    public void setCategories(List<String> categories)
-    {
+    public void setCategories(List<String> categories) {
         this.categories = categories;
     }
 
-    public String getAutomationid()
-    {
+    public String getAutomationid() {
         return this.automationid;
     }
 
-    public void setAutomationid(String automationId)
-    {
+    public void setAutomationid(String automationId) {
         this.automationid = automationId;
     }
 
-   
-
-    public String getAlbumUrl()
-    {
+    public String getAlbumUrl() {
         return albumurl;
     }
 
-    public void setAlbumUrl(String albumUrl)
-    {
+    public void setAlbumUrl(String albumUrl) {
         this.albumurl = albumUrl;
     }
 
-    @Override
-    public String toString()
-    {
-        return "Item [title=" + title + ", artists=" + artists + ", categories=" + categories
-                + ", automationid=" + automationid + ", url=" + albumurl + "]";
+    public Integer getOrder() {
+        return order;
     }
 
-    public boolean equals(Object obj)
-    {
-        return ((obj instanceof Item)) &&
-                (getAutomationid().equals(((Item) obj).getAutomationid()));
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Item [title=" + title + ", artists=" + artists + ", categories=" + categories
+                + ", automationid=" + automationid + ", order=" + order + ", url=" + albumurl + "]";
+    }
+
+    public boolean equals(Object obj) {
+        return ((obj instanceof Item))
+                && (getAutomationid().equals(((Item) obj).getAutomationid()));
     }
 }
